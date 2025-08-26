@@ -12,6 +12,9 @@ export const constants = {
     USER_ADDED: 'User registered successfully',
     USER_LOGIN: 'User logged in successfully',
     USER_FETCHED: 'Users fetched successfully',
+    PROJECTS_ADDED: 'Project added successfully',
+    PROJECTS_UPDATED: 'Project updated successfully',
+    PROJECTS_FETCHED: 'Projects fetched successfully',
   },
   ERROR_STATUS: {
     BAD_REQUEST: 400,
@@ -35,6 +38,12 @@ export const constants = {
     UNAUTHORIZED_ACCESS: 'Unauthorized access',
     TOKEN_EXPIRED: 'Token has expired',
     TOKEN_ERROR: 'Token is invalid',
+    PROJECT_CREATION_FAILED: 'Project creation failed',
+    PROJECT_UPDATION_FAILED: 'Project updation failed',
+    PROJECTS_NOT_FOUND: 'No projects found',
+    PROJECT_ALREADY_EXISTS: 'Project with this name already exists',
+    OWNER_NOT_FOUND: 'Owner with the given ID does not exist',
+    ASSIGNEE_NOT_FOUND: 'Assignee with the given ID does not exist',
   },
 
   DEFAULT_PARAMS: {
