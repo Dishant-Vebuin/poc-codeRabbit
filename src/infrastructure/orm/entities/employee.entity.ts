@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
-import { sequelize } from "../config/sequelize.connection.js";
 import Department from "./department.entity.js";
+import { sequelize } from "../config/sequelize.connection.js";
 
 const Employee = sequelize.define(
   "m_employees",

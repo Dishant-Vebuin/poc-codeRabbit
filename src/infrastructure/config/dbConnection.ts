@@ -1,4 +1,4 @@
-import { sequelize } from '../orm/config/sequelize.connection';
+import { sequelize } from "../orm/config/sequelize.connection";
 
 export const connectDB = async () => {
   try {
