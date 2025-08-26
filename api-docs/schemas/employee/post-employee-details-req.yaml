@@ -1,0 +1,41 @@
+type: object
+required:
+  - success
+  - message
+  - data
+properties:
+  success:
+    type: boolean
+    description: Indicates whether the operation was successful.
+  message:
+    type: string
+    description: Employee details posted successfully.
+  data:
+    type: object
+    required:
+      - id
+      - departmentId
+      - name
+      - email
+      - position
+      - salary
+    properties:
+      id:
+        type: integer
+        description: Unique identifier for the employee.
+      departmentId:
+        type: integer
+        description: Unique identifier for the department.
+      name:
+        type: string
+        description: Name of the employee.
+      email:
+        type: string
+        description: Email address of the employee.
+      position:
+        type: string
+        description: Position of the employee.
+      salary:
+        type: number
+        format: float
+        description: Salary of the employee.

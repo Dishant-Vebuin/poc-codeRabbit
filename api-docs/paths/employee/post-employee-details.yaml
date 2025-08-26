@@ -1,0 +1,56 @@
+post:
+  tags:
+    - Employee
+  summary: Add a new employee
+  requestBody:
+    description: Edit Employee slot request
+    content:
+      application/json:
+        schema:
+          $ref: "../../_schemas.yaml#/postEmployeeReq"
+  responses:
+    "201":
+      description: Employee added successfully
+      content:
+        application/json:
+          schema:
+            $ref: "../../_schemas.yaml#/postEmployeeRes"
+    "400":
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: "Invalid request data."
+    "409":
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: "Employee already exists with the provided details."
+    "500":
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: "An error occurred while adding the employee."

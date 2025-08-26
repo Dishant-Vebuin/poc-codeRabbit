@@ -1,0 +1,5 @@
+type: object
+properties:
+  employeeId:
+    type: integer
+    example: 1

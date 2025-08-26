@@ -1,0 +1,8 @@
+/api/v1/add-employee:
+  $ref: './paths/employee/post-employee-details.yaml'
+/api/v1/delete-employee/{employeeId}:
+  $ref: './paths/employee/delete-employee-details.yaml'
+/api/v1/get-employee:
+  $ref: './paths/employee/get-employee-details.yaml'
+/api/v1/update-employee/{employeeId}:
+  $ref: './paths/employee/update-employee-details.yaml'

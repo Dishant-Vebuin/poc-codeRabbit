@@ -1,0 +1,7 @@
+name: employeeId
+in: path
+description: Unique Id of Each Employee
+required: true
+schema:
+  type: string
+  example: 1

@@ -1,0 +1,14 @@
+deleteEmployeeReq:
+  $ref: "./schemas/employee/delete-employee-details-req.yaml"
+postEmployeeReq:
+  $ref: "./schemas/employee/post-employee-details-req.yaml"
+updateEmployeeReq:
+  $ref: "./schemas/employee/patch-employee-details-req.yaml"
+deleteEmployeeRes:
+  $ref: "./schemas/employee/delete-employee-details-res.yaml"
+postEmployeeRes:
+  $ref: "./schemas/employee/post-employee-details-res.yaml"
+getEmployeeRes:
+  $ref: "./schemas/employee/get-employee-details-res.yaml"
+patchEmployeeRes:
+  $ref: "./schemas/employee/patch-employee-details-res.yaml"

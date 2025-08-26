@@ -1,0 +1,38 @@
+delete:
+  tags:
+    - Employee
+  summary: Delete an employee by ID
+  parameters:
+    $ref: "../../parameters/employeeId/employee-id.yaml"
+  responses:
+    "200":
+      description: "Employee deleted successfully"
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: ""
+    "404":
+      description: "Employee not found"
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: "Employee not found."
+    "500":
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+        success: false
+        message:
+          type: string
+          example: "An error occurred while deleting the employee."

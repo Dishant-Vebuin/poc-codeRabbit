@@ -1,0 +1,48 @@
+{
+  "name": "codex",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Dishant <dishantchauhan@vebuin.com>",
+  "scripts": {
+    "build": "tsc",
+    "test:unit": "jest test/unit_test",
+    "test:integration": "jest --runInBand test/integration_test",
+    "jest:coverage": "jest --runInBand --collectCoverage",
+    "start": "nodemon --exec ts-node ./src/infrastructure/webserver/express/server.ts",
+    "api-docs:validate": " openapi-generator-cli validate -i api-docs/_openApi.json",
+    "api-docs:build": " swagger-cli bundle api-docs/openApi.yaml --outfile api-docs/_openApi.json --type json"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "joi": "^18.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.14.3",
+    "sequelize": "^6.37.7",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.22.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.3.0",
+    "@types/supertest": "^6.0.3",
+    "@types/swagger-ui-express": "^4.1.8",
+    "@typescript-eslint/eslint-plugin": "^8.39.1",
+    "@typescript-eslint/parser": "^8.39.1",
+    "eslint": "^9.33.0",
+    "jest": "^30.0.5",
+    "nodemon": "^3.1.10",
+    "prettier": "^3.6.2",
+    "supertest": "^7.1.4",
+    "swagger-cli": "^4.0.4",
+    "ts-jest": "^29.4.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}

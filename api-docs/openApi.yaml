@@ -1,0 +1,17 @@
+openapi: 3.0.0
+info:
+  title: CRUD Operation
+  description: API documentation for the CRUD operation service.
+  version: 1.0.0
+servers:
+  - url: http://localhost:5000
+    description: Local development server
+parameters:
+  $ref: ./_parameter.yaml
+paths:
+  $ref: ./_path.yaml
+tags:
+  $ref: ./_tags.yml
+components:
+  schemas:
+    $ref: ./_schemas.yaml

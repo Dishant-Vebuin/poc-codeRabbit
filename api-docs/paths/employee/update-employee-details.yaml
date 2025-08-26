@@ -1,0 +1,58 @@
+patch:
+  tags:
+    - employee
+  summary: Update employee details by ID
+  parameters:
+    $ref: "../../parameters/employeeId/employee-id.yaml"
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../schemas/employee/patch-employee-details-req.yaml"
+  responses:
+    "200":
+      description: Employee details updated successfully
+      content:
+        application/json:
+          schema:
+            $ref: "../../schemas/employee/patch-employee-details-res.yaml"
+    "400":
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: "Invalid request data."
+    "404":
+      description: Employee not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: "Employee not found."
+    "500":
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: "An error occurred while updating the employee details."

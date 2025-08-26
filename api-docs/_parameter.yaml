@@ -1,0 +1,2 @@
+employee-id:
+  $ref: "./_parameter.yaml"

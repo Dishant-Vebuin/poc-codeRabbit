@@ -1,0 +1,520 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "CRUD Operation",
+    "description": "API documentation for the CRUD operation service.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000",
+      "description": "Local development server"
+    }
+  ],
+  "parameters": {
+    "employee-id": {
+      "$ref": "#/parameters"
+    }
+  },
+  "paths": {
+    "/api/v1/add-employee": {
+      "post": {
+        "tags": [
+          "Employee"
+        ],
+        "summary": "Add a new employee",
+        "requestBody": {
+          "description": "Edit Employee slot request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postEmployeeReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Employee added successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/postEmployeeRes"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid request data."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Employee already exists with the provided details."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "An error occurred while adding the employee."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/delete-employee/{employeeId}": {
+      "delete": {
+        "tags": [
+          "Employee"
+        ],
+        "summary": "Delete an employee by ID",
+        "parameters": {
+          "$ref": "#/paths/~1api~1v1~1get-employee/get/parameters"
+        },
+        "responses": {
+          "200": {
+            "description": "Employee deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": ""
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Employee not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Employee not found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": null
+                }
+              },
+              "success": false,
+              "message": {
+                "type": "string",
+                "example": "An error occurred while deleting the employee."
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/get-employee": {
+      "get": {
+        "tags": [
+          "Employee"
+        ],
+        "summary": "Get al lemployee details",
+        "parameters": {
+          "name": "employeeId",
+          "in": "path",
+          "description": "Unique Id of Each Employee",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": 1
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Employee details retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getEmployeeRes"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No employees found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "No employees found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "An error occurred while retrieving employee details."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/update-employee/{employeeId}": {
+      "patch": {
+        "tags": [
+          "employee"
+        ],
+        "summary": "Update employee details by ID",
+        "parameters": {
+          "$ref": "#/paths/~1api~1v1~1get-employee/get/parameters"
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/updateEmployeeReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Employee details updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/patchEmployeeRes"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid request data."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Employee not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Employee not found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "An error occurred while updating the employee details."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "deleteEmployeeReq": {
+        "type": "object",
+        "properties": {
+          "employeeId": {
+            "type": "integer",
+            "example": 1
+          }
+        }
+      },
+      "postEmployeeReq": {
+        "type": "object",
+        "required": [
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indicates whether the operation was successful."
+          },
+          "message": {
+            "type": "string",
+            "description": "Employee details posted successfully."
+          },
+          "data": {
+            "type": "object",
+            "required": [
+              "id",
+              "departmentId",
+              "name",
+              "email",
+              "position",
+              "salary"
+            ],
+            "properties": {
+              "id": {
+                "type": "integer",
+                "description": "Unique identifier for the employee."
+              },
+              "departmentId": {
+                "type": "integer",
+                "description": "Unique identifier for the department."
+              },
+              "name": {
+                "type": "string",
+                "description": "Name of the employee."
+              },
+              "email": {
+                "type": "string",
+                "description": "Email address of the employee."
+              },
+              "position": {
+                "type": "string",
+                "description": "Position of the employee."
+              },
+              "salary": {
+                "type": "number",
+                "format": "float",
+                "description": "Salary of the employee."
+              }
+            }
+          }
+        }
+      },
+      "updateEmployeeReq": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the employee."
+          },
+          "email": {
+            "type": "string",
+            "description": "Email address of the employee."
+          },
+          "position": {
+            "type": "string",
+            "description": "Position of the employee."
+          },
+          "salary": {
+            "type": "number",
+            "format": "float",
+            "description": "Salary of the employee."
+          },
+          "departmentId": {
+            "type": "integer",
+            "description": "Unique identifier for the department."
+          }
+        },
+        "required": []
+      },
+      "deleteEmployeeRes": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "example": true
+          },
+          "message": {
+            "type": "string",
+            "example": "Employee Deleted Successfully"
+          }
+        }
+      },
+      "postEmployeeRes": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "example": true
+          },
+          "message": {
+            "type": "string",
+            "example": "Employee added successfully"
+          }
+        }
+      },
+      "getEmployeeRes": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indicates whether the operation was successful."
+          },
+          "message": {
+            "type": "string",
+            "description": "Employee Fetched Succesfully"
+          },
+          "data": null,
+          "type": "array",
+          "employees": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "description": "Unique identifier for the employee."
+                },
+                "departmentId": {
+                  "type": "integer",
+                  "description": "Unique identifier for the department."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Name of the employee."
+                },
+                "email": {
+                  "type": "string",
+                  "description": "Email address of the employee."
+                },
+                "position": {
+                  "type": "string",
+                  "description": "Position of the employee."
+                },
+                "salary": {
+                  "type": "number",
+                  "format": "float",
+                  "description": "Salary of the employee."
+                }
+              }
+            }
+          }
+        }
+      },
+      "patchEmployeeRes": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "example": true
+          },
+          "message": {
+            "type": "string",
+            "example": "Employee updated successfully"
+          }
+        }
+      }
+    }
+  }
+}
