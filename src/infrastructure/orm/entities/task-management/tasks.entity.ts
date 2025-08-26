@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
-import Projects from "./project.entity.js";
-import Users from "./user.entity.js";
-import { sequelize } from "../../config/sequelize.connection.js";
+import Projects from "./project.entity";
+import Users from "./user.entity";
+import { sequelize } from "../../config/sequelize.connection";
 
 const Tasks = sequelize.define("t_tasks", {
     "id": {

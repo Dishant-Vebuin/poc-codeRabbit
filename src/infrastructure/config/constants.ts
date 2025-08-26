@@ -15,6 +15,9 @@ export const constants = {
     PROJECTS_ADDED: 'Project added successfully',
     PROJECTS_UPDATED: 'Project updated successfully',
     PROJECTS_FETCHED: 'Projects fetched successfully',
+    TASKS_ADDED: 'Task added successfully',
+    TASKS_UPDATED: 'Task updated successfully',
+    TASKS_DELETED: 'Task deleted successfully'
   },
   ERROR_STATUS: {
     BAD_REQUEST: 400,
@@ -44,6 +47,8 @@ export const constants = {
     PROJECT_ALREADY_EXISTS: 'Project with this name already exists',
     OWNER_NOT_FOUND: 'Owner with the given ID does not exist',
     ASSIGNEE_NOT_FOUND: 'Assignee with the given ID does not exist',
+    TASKS_NOT_FOUND: 'Task with the given ID does not exist',
+    CANNOT_REOPEN_COMPLETED_TASK: 'Cannot reopen a completed task',
   },
 
   DEFAULT_PARAMS: {
