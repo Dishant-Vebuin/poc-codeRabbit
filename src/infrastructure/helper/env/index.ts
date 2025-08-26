@@ -25,6 +25,7 @@ export const TEST_ENV = {
   DB_PASSWORD_TEST: envString(process.env.DB_PASSWORD_TEST),
   SERVER_PORT_TEST: envNumber(process.env.PORT_TEST),
   FRONTEND_URL: envString(process.env.FRONTEND_URL),
+  JWT_ACCESS_SECRET: envString(process.env.JWT_ACCESS_SECRET),
 };
 export const DEV_ENV = {
   PORT_DEV: envNumber(process.env.PORT),
@@ -34,4 +35,5 @@ export const DEV_ENV = {
   DB_PASSWORD_DEV: envString(process.env.DB_PASSWORD_DEV),
   SERVER_PORT_DEV: envNumber(process.env.SERVER_PORT_DEV),
   FRONTEND_URL: envString(process.env.FRONTEND_URL),
+  JWT_ACCESS_SECRET: envString(process.env.JWT_ACCESS_SECRET),
 };

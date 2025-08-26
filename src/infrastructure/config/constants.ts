@@ -9,6 +9,9 @@ export const constants = {
     EMPLOYEE_DELETED: 'Employee deleted successfully',
     EMPLOYEE_UPDATED: 'Employee updated successfully',
     EMPLOYEE_FETCHED: 'Employees fetched successfully',
+    USER_ADDED: 'User registered successfully',
+    USER_LOGIN: 'User logged in successfully',
+    USER_FETCHED: 'Users fetched successfully',
   },
   ERROR_STATUS: {
     BAD_REQUEST: 400,
@@ -24,6 +27,14 @@ export const constants = {
   ERROR_MESSAGE: {
     EMPLOYEE_ALREADY_EXISTS: 'Employee Already Exists',
     EMPLOYEE_NOT_FOUND: 'Employee not found',
+    USER_ALREADY_EXISTS: 'User already exists',
+    USER_NOT_FOUND: 'User not found',
+    INVALID_CREDENTIALS: 'Invalid credentials',
+    INTERNAL_SERVER_ERROR: 'Internal server error',
+    TOKEN_MISSING: 'Token is missing',
+    UNAUTHORIZED_ACCESS: 'Unauthorized access',
+    TOKEN_EXPIRED: 'Token has expired',
+    TOKEN_ERROR: 'Token is invalid',
   },
 
   DEFAULT_PARAMS: {
@@ -35,4 +46,8 @@ export const constants = {
     SLOTS: 0,
     RADIUS: 5,
   },
+  ROLES: {
+    ADMIN: 'admin',
+    USER: 'user',
+  }
 };
