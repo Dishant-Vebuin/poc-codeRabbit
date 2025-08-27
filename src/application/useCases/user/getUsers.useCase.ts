@@ -15,16 +15,15 @@ export const getUsersUseCase = async (
         if (!users) {
             throw new Error(constants.ERROR_MESSAGE.USER_NOT_FOUND);
         }
-        return users;
+        return Array.isArray(users) ? users : [users];
     }
     if (userId !== tokenId) {
         throw new Error(constants.ERROR_MESSAGE.UNAUTHORIZED_ACCESS);
-    }
-    else {
+    } else {
         const user = await userRepo.getUserById(userId, transaction);
         if (!user) {
             throw new Error(constants.ERROR_MESSAGE.USER_NOT_FOUND);
         }
-        return user;
+        return [user];
     }
 };

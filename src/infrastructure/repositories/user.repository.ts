@@ -22,13 +22,13 @@ export const userRepository: userPort = {
         });
         return (user as unknown as LoginUserDetails) ?? null;
     },
-    getUserById: async (userId: number, transaction: Transaction): Promise<UserDetails[] | null> => {
+    getUserById: async (userId: number, transaction: Transaction): Promise<UserDetails | null> => {
         const user = await Users.findOne({
             where: { id: userId },
             transaction
         });
         if (user) {
-            return [user.dataValues];
+            return user.dataValues;
         }
         return null;
     },

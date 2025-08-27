@@ -33,7 +33,7 @@ export const tasksRepository: tasksPort = {
 
         return affectedRows > 0;
     },
-    deleteTasks: async (taskId: number, transaction: Transaction) => {
+    deleteTasks: async (taskId: number, ownerId: number, transaction: Transaction) => {
         const deleteTasksByIdQuery = fs.readFileSync(
             path.join(__dirname, "sql/deleteTasksById.sql"),
             "utf-8"
@@ -41,7 +41,7 @@ export const tasksRepository: tasksPort = {
 
         console.log("Delete Query", deleteTasksByIdQuery);
         await sequelize.query(deleteTasksByIdQuery, {
-            replacements: { taskId },
+            replacements: { taskId, ownerId },
             type: QueryTypes.DELETE,
             transaction
         });

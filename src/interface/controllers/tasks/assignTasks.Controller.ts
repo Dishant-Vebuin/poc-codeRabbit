@@ -24,7 +24,6 @@ export const assignTasksController = (tasksRepo: tasksPort) => async (req: Reque
             res
         );
     } catch (error) {
-        console.log("Error ", error);
         if (!(error instanceof Error)) return;
 
         if (error.message === constants.ERROR_MESSAGE.TASKS_NOT_FOUND) {

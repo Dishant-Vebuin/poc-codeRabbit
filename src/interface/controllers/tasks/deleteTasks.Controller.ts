@@ -7,9 +7,12 @@ import { deleteTasksUseCase } from "../../../application/useCases/tasks/deleteTa
 export const deleteTasksController = (tasksRepo: tasksPort) => async (req: Request, res: Response) => {
     try {
         const { taskId } = req.params;
+
+        const { id } = res.locals.user;
         await tasksRepo.wrapTransaction(async (transaction) => {
             return await deleteTasksUseCase(
                 Number(taskId),
+                id,
                 tasksRepo,
                 transaction
             )
@@ -21,7 +24,6 @@ export const deleteTasksController = (tasksRepo: tasksPort) => async (req: Reque
             res
         )
     } catch (error) {
-        console.log("Error messagge", error);
         if (!(error instanceof Error)) {
             displayMessage(
                 constants.ERROR_STATUS.INTERNAL_SERVER_ERROR,
