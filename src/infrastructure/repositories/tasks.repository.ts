@@ -5,6 +5,7 @@ import { tasksPort } from "../../application/port/tasks/tasksRepo.port";
 import { sequelize } from "../config/dbConnection";
 import fs from "fs"
 import path from "path";
+import Projects from "../orm/entities/task-management/project.entity";
 
 export const tasksRepository: tasksPort = {
     wrapTransaction,
@@ -34,16 +35,15 @@ export const tasksRepository: tasksPort = {
         return affectedRows > 0;
     },
     deleteTasks: async (taskId: number, ownerId: number, transaction: Transaction) => {
-        const deleteTasksByIdQuery = fs.readFileSync(
-            path.join(__dirname, "sql/deleteTasksById.sql"),
-            "utf-8"
-        );
+        const deletedCount = await sequelize.query(
+            fs.readFileSync(path.join(__dirname, 'sql/deleteTasksById.sql'), 'utf-8'),
+            {
+                replacements: { taskId, ownerId },
+                transaction,
+                type: QueryTypes.BULKDELETE
+            }
+        ) as number;
 
-        console.log("Delete Query", deleteTasksByIdQuery);
-        await sequelize.query(deleteTasksByIdQuery, {
-            replacements: { taskId, ownerId },
-            type: QueryTypes.DELETE,
-            transaction
-        });
-    },
+        return deletedCount > 0;
+    }
 }
