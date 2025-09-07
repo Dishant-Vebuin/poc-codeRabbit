@@ -30,7 +30,6 @@ export const tasksRepository: tasksPort = {
             { status, assigneeId },
             { where: { id: taskId }, transaction }
         );
-        console.log("Rows updated:", affectedRows);
 
         return affectedRows > 0;
     },
