@@ -9,6 +9,15 @@ export const constants = {
     EMPLOYEE_DELETED: 'Employee deleted successfully',
     EMPLOYEE_UPDATED: 'Employee updated successfully',
     EMPLOYEE_FETCHED: 'Employees fetched successfully',
+    USER_ADDED: 'User registered successfully',
+    USER_LOGIN: 'User logged in successfully',
+    USER_FETCHED: 'Users fetched successfully',
+    PROJECTS_ADDED: 'Project added successfully',
+    PROJECTS_UPDATED: 'Project updated successfully',
+    PROJECTS_FETCHED: 'Projects fetched successfully',
+    TASKS_ADDED: 'Task added successfully',
+    TASKS_UPDATED: 'Task updated successfully',
+    TASKS_DELETED: 'Task deleted successfully'
   },
   ERROR_STATUS: {
     BAD_REQUEST: 400,
@@ -24,6 +33,22 @@ export const constants = {
   ERROR_MESSAGE: {
     EMPLOYEE_ALREADY_EXISTS: 'Employee Already Exists',
     EMPLOYEE_NOT_FOUND: 'Employee not found',
+    USER_ALREADY_EXISTS: 'User already exists',
+    USER_NOT_FOUND: 'User not found',
+    INVALID_CREDENTIALS: 'Invalid credentials',
+    INTERNAL_SERVER_ERROR: 'Internal server error',
+    TOKEN_MISSING: 'Token is missing',
+    UNAUTHORIZED_ACCESS: 'Unauthorized access',
+    TOKEN_EXPIRED: 'Token has expired',
+    TOKEN_ERROR: 'Token is invalid',
+    PROJECT_CREATION_FAILED: 'Project creation failed',
+    PROJECT_UPDATION_FAILED: 'Project updation failed',
+    PROJECTS_NOT_FOUND: 'No projects found',
+    PROJECT_ALREADY_EXISTS: 'Project with this name already exists',
+    OWNER_NOT_FOUND: 'Owner with the given ID does not exist',
+    ASSIGNEE_NOT_FOUND: 'Assignee with the given ID does not exist',
+    TASKS_NOT_FOUND: 'Task with the given ID does not exist',
+    CANNOT_REOPEN_COMPLETED_TASK: 'Cannot reopen a completed task',
   },
 
   DEFAULT_PARAMS: {
@@ -35,4 +60,8 @@ export const constants = {
     SLOTS: 0,
     RADIUS: 5,
   },
+  ROLES: {
+    ADMIN: 'admin',
+    USER: 'user',
+  }
 };

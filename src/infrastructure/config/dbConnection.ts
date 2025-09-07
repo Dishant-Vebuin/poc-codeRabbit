@@ -1,9 +1,8 @@
-import { sequelize } from '../orm/config/sequelize.connection';
+import { sequelize } from "../orm/config/sequelize.connection";
 
 export const connectDB = async () => {
   try {
     await sequelize.authenticate();
-    await sequelize.sync({ alter: true });
     console.log('Database connected successfully.');
   } catch (error) {
     console.error('Unable to connect to the database:', error);
