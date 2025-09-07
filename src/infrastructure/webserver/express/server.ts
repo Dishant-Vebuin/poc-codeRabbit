@@ -2,9 +2,12 @@ import cors from 'cors';
 import express, { Application } from 'express';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../../../../api-docs/_openApi.json';
-import { CONFIG, sequelize } from '../../orm/config/sequelize.connection';
 import { connectDB } from '../../config/dbConnection';
 import { employeeRouter } from '../../../interface/routes/employee.route';
+import { userRouter } from '../../../interface/routes/task-management/user.route';
+import { CONFIG, sequelize } from '../../orm/config/sequelize.connection';
+import { projectsRouter } from '../../../interface/routes/task-management/projects.route';
+import { tasksRouter } from '../../../interface/routes/task-management/tasks.route';
 const app: Application = express();
 
 const PORT = CONFIG.SERVER_PORT;
@@ -18,6 +21,9 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Routes
 app.use('/api/v1/employee', employeeRouter)
+app.use('/api/v1/user', userRouter)
+app.use('/api/v1/projects', projectsRouter)
+app.use('/api/v1/tasks', tasksRouter)
 
 app.listen(PORT, async () => {
     await connectDB().then(() => {
