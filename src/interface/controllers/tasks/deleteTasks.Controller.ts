@@ -8,11 +8,9 @@ export const deleteTasksController = (tasksRepo: tasksPort) => async (req: Reque
     try {
         const { taskId } = req.params;
 
-        const { id } = res.locals.user;
         await tasksRepo.wrapTransaction(async (transaction) => {
             return await deleteTasksUseCase(
                 Number(taskId),
-                id,
                 tasksRepo,
                 transaction
             )

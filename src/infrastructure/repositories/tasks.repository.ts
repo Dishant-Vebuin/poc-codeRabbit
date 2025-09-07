@@ -34,11 +34,11 @@ export const tasksRepository: tasksPort = {
 
         return affectedRows > 0;
     },
-    deleteTasks: async (taskId: number, ownerId: number, transaction: Transaction) => {
+    deleteTasks: async (taskId: number, transaction: Transaction) => {
         const deletedCount = await sequelize.query(
             fs.readFileSync(path.join(__dirname, 'sql/deleteTasksById.sql'), 'utf-8'),
             {
-                replacements: { taskId, ownerId },
+                replacements: { taskId },
                 transaction,
                 type: QueryTypes.BULKDELETE
             }
