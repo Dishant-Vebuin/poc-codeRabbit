@@ -5,7 +5,7 @@ import { tasksPort } from "../../application/port/tasks/tasksRepo.port";
 import { sequelize } from "../config/dbConnection";
 import fs from "fs"
 import path from "path";
-import Projects from "../orm/entities/task-management/project.entity";
+import TasksLog from "../orm/entities/task-management/tasksLog.entity";
 
 export const tasksRepository: tasksPort = {
     wrapTransaction,
@@ -45,5 +45,19 @@ export const tasksRepository: tasksPort = {
         ) as number;
 
         return deletedCount > 0;
-    }
+    },
+    addTasksLog: async (payload: any, transaction: Transaction): Promise<void> => {
+        await sequelize.query(
+            fs.readFileSync(path.join(__dirname, "sql/addTasksLog.sql"), "utf-8"),
+            {
+                replacements: {
+                    taskId: payload.taskId,
+                    status: payload.status,
+                    loggedBy: payload.loggedBy ?? null,
+                },
+                transaction,
+                type: QueryTypes.INSERT,
+            }
+        );
+    },
 }

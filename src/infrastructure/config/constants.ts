@@ -17,7 +17,8 @@ export const constants = {
     PROJECTS_FETCHED: 'Projects fetched successfully',
     TASKS_ADDED: 'Task added successfully',
     TASKS_UPDATED: 'Task updated successfully',
-    TASKS_DELETED: 'Task deleted successfully'
+    TASKS_DELETED: 'Task deleted successfully',
+    TASK_LOG_ADDED: 'Tasks Log added successfully'
   },
   ERROR_STATUS: {
     BAD_REQUEST: 400,

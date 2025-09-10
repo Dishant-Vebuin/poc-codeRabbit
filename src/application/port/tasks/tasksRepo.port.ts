@@ -6,5 +6,6 @@ export type tasksPort = {
     getTasksById: (id: number, transaction: Transaction) => Promise<taskDetails | null>;
     updateTasks: (id: number, status: string, assigneeId: number | null, transaction: Transaction) => Promise<boolean>;
     deleteTasks: (id: number, transaction: Transaction) => Promise<boolean>;
+    addTasksLog: (payload: any, transaction: Transaction) => Promise<void>;
     wrapTransaction: <T>(fun: (transaction: Transaction) => Promise<T>) => Promise<T>;
 }

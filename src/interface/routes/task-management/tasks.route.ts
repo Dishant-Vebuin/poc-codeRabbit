@@ -10,11 +10,14 @@ import { deleteTasksController } from '../../controllers/tasks/deleteTasks.Contr
 import { taskIdSchema } from '../../../domain/schemas/tasks/taskId.schema';
 import { assignTasksController } from '../../controllers/tasks/assignTasks.Controller';
 import { assignTasksSchema } from '../../../domain/schemas/tasks/assignTasks.schema';
+import { addTasksLogController } from '../../controllers/tasks/addTasksLog.Controller';
+import { addTasksLogSchema } from '../../../domain/schemas/tasks/addTasksLog.schema';
 
 const tasksRouter = express.Router();
 
 tasksRouter.post('/add-tasks', authMiddleware(), validateSchema(addTasksSchema), addTasksController(projectsRepository, tasksRepository, userRepository))
 tasksRouter.put('/assign-tasks/:taskId', authMiddleware(), validateSchema(assignTasksSchema), assignTasksController(tasksRepository))
 tasksRouter.delete('/delete-tasks/:taskId', authMiddleware(), validateSchema(taskIdSchema), deleteTasksController(tasksRepository))
+tasksRouter.post('/:id/log-completion', authMiddleware(), validateSchema(addTasksLogSchema), addTasksLogController(userRepository, tasksRepository))
 
-export {tasksRouter}
+export { tasksRouter }
